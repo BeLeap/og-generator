@@ -5,7 +5,7 @@ Deno.serve((req) => {
     const params = paramStringSplitted.reduce<{ [key: string]: string }>(
       (acc, it) => {
         const parsed = it.split("=");
-        acc[parsed[0]] = parsed[1];
+        acc[parsed[0]] = decodeURIComponent(parsed[1]);
         return acc;
       },
       {},
